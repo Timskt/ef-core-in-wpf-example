@@ -120,7 +120,7 @@ public async Task UpdateAddressLine1()
 }
 ```
 
-WpfAppWithDbContextScope is similar to WpfAppWithDbContextFactory but utilizes scope creation using IServiceScopeFactory instance and transient lifecycle.
+WpfAppWithDbContextScope is similar to WpfAppWithDbContextFactory but utilizes scope creation using IServiceScopeFactory instance and Scoped lifecycle.
 
 ```
 public async Task UpdateAddressLine1()
