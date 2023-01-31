@@ -1,6 +1,6 @@
 # EF-Core-In-WPF-Example
 
-This example shows how EF Core Domain, DAL and BLL structures are implemented and how this structure can be utilized by both ASP.NET MVC Web app and WPF app.
+This example shows how EF Core Domain, DAL and BLL structures can be implemented and how this structures can be utilized by both ASP.NET MVC Web app and WPF app.
 
 There is only one example entity - Address.
 
@@ -120,7 +120,7 @@ public async Task UpdateAddressLine1()
 }
 ```
 
-WpfAppWithDbContextScope is similar to WpfAppWithDbContextFactory but utilizes scope creation using IServiceScopeFactory instance and Scoped lifecycle.
+WpfAppWithDbContextScope is similar to WpfAppWithDbContextFactory but utilizes scope creation using IServiceScopeFactory instance and Scoped lifecycle for DbContext and related data structures.
 
 ```
 public async Task UpdateAddressLine1()
