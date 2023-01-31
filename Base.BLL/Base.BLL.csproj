@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Base.Contracts.Mapper\Base.Contracts.Mapper.csproj" />
+		<ProjectReference Include="..\Base.Contracts.BLL\Base.Contracts.BLL.csproj" />
+		<ProjectReference Include="..\Base.Contracts.DAL\Base.Contracts.DAL.csproj" />
+	</ItemGroup>
+
+</Project>

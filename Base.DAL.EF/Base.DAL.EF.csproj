@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.32" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Base.Contracts.Mapper\Base.Contracts.Mapper.csproj" />
+		<ProjectReference Include="..\Base.Contracts.DAL\Base.Contracts.DAL.csproj" />
+		<ProjectReference Include="..\Base.Contracts.Domain\Base.Contracts.Domain.csproj" />
+	</ItemGroup>
+
+</Project>

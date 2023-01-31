@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F2C761A6-CE80-4DDE-BB04-930E4E7B5694}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WpfAppWithDbContextScope</RootNamespace>
+    <AssemblyName>WpfAppWithDbContextScope</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection">
+      <Version>8.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="CommunityToolkit.Mvvm">
+      <Version>8.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore">
+      <Version>3.1.32</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>7.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\App.BLL.DTO\App.BLL.DTO.csproj">
+      <Project>{2FA692A9-DC06-439D-90D7-9D06168B7BC5}</Project>
+      <Name>App.BLL.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.BLL\App.BLL.csproj">
+      <Project>{9DA829C9-9AFE-4B91-A3ED-7BF9B21DDD15}</Project>
+      <Name>App.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Contracts.BLL\App.Contracts.BLL.csproj">
+      <Project>{70B9FA9F-66CA-4F97-A6D9-55BD1627B611}</Project>
+      <Name>App.Contracts.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.Contracts.DAL\App.Contracts.DAL.csproj">
+      <Project>{18DE4A90-2117-4E9C-A586-CD5B57584BFE}</Project>
+      <Name>App.Contracts.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\App.DAL.EF\App.DAL.EF.csproj">
+      <Project>{E0FD17C1-D31E-41D2-9C1A-685DB64F860A}</Project>
+      <Name>App.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.BLL\Base.BLL.csproj">
+      <Project>{a85151ec-62e4-4a8a-8c80-b04800640277}</Project>
+      <Name>Base.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Contracts.BLL\Base.Contracts.BLL.csproj">
+      <Project>{3f6f4a09-c428-4df6-8459-e3db6d24b5bf}</Project>
+      <Name>Base.Contracts.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Contracts.DAL\Base.Contracts.DAL.csproj">
+      <Project>{1D2F2841-D472-4477-AE31-A05B1CD03C1B}</Project>
+      <Name>Base.Contracts.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Contracts.Domain\Base.Contracts.Domain.csproj">
+      <Project>{c0093603-14d3-4157-87ae-9498b21be5e7}</Project>
+      <Name>Base.Contracts.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.DAL.EF\Base.DAL.EF.csproj">
+      <Project>{86ed880b-f839-41f3-bc72-36f0dac22545}</Project>
+      <Name>Base.DAL.EF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Base.Domain\Base.Domain.csproj">
+      <Project>{b88f8424-d0fb-4f73-8f8a-351c2538eeb8}</Project>
+      <Name>Base.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

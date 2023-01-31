@@ -1,0 +1,44 @@
+﻿<Window x:Class="WpfAppWithAttribute.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:wpfAppWithAttribute="clr-namespace:WpfAppWithAttribute"
+        xmlns:dto="clr-namespace:App.BLL.DTO;assembly=App.BLL.DTO"
+        d:DataContext="{d:DesignInstance Type=wpfAppWithAttribute:MainWindowViewModel, IsDesignTimeCreatable=False}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        Loaded="OnLoaded"
+        Unloaded="OnUnloaded">
+    <Window.Resources>
+        <CollectionViewSource x:Key="AddressesCollectionViewSource" Source="{Binding Addresses}" />
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Content="Update address line 1 in db" Command="{Binding UpdateAddressLine1Command}" />
+            <TextBox Grid.Column="1" x:Name="SelectedAddressAddressLine1TextBox"
+                     Text="{Binding SelectedAddressAddressLine1, UpdateSourceTrigger=PropertyChanged}" />
+        </Grid>
+        <ListView Grid.Row="1" x:Name="AddressesGrid"
+                  ItemsSource="{Binding Source={StaticResource AddressesCollectionViewSource}}"
+                  SelectedItem="{Binding SelectedAddress}">
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="{x:Type dto:Address}">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding AddressLine1}" />
+                        <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+                        <TextBlock Text="{Binding AddressLine2}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

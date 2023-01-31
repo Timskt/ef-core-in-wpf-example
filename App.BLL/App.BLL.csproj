@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\App.Contracts.BLL\App.Contracts.BLL.csproj" />
+		<ProjectReference Include="..\Base.BLL\Base.BLL.csproj" />
+		<ProjectReference Include="..\App.Contracts.DAL\App.Contracts.DAL.csproj" />
+		<ProjectReference Include="..\Base.Mapper\Base.Mapper.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Mappers\" />
+		<Folder Include="Services\" />
+	</ItemGroup>
+
+</Project>
